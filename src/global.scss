@@ -1,0 +1,56 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.shared-modal{
+  --height: 40%;
+  --border-radius: 10px;
+    padding: 25px;
+}
+.stop-modal .modal-wrapper{
+  --height: 80%;
+  margin-top: 40%;
+}
+.loading-css {
+  --background: white;
+  --spinner-color: var(--ion-color-success);
+
+  color: #222;
+}
+.alert-style .alert-wrapper {
+  --background: #e5e5e5;
+  .alert-title.sc-ion-alert-md, .alert-title.sc-ion-alert-ios {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+  }
+  .alert-button.sc-ion-alert-md, .alert-button.sc-ion-alert-ios {
+    color: var(--ion-color-success);
+  }
+}
+

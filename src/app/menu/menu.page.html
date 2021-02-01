@@ -1,0 +1,30 @@
+<ion-split-pane contentId="menu-content">
+<ion-menu  type="reveal" side="start" content-id="menu-content">
+        <ion-content [fullscreen]="true">
+            <div class="menu-header-bg">
+            </div>
+            <div class="header-content">
+                <ion-img src="../assets/img/logo.png" alt=""></ion-img>
+                <ion-label>
+                    <h2>TransFacile</h2>
+                </ion-label>
+            </div>
+            <div class="action-button">
+                <ion-button (click)="logoutButton()">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    se déconnecter
+                </ion-button>
+            </div>
+            <ion-list lines="none" class="menu-items">
+                <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
+                    <ion-item [routerLink]="page.path" routerDirection="root" routerLinkActive="active-item">
+                        <ion-icon [name]="page.iconame" slot="start"></ion-icon>
+                        <ion-label>{{page.name}}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+<ion-router-outlet id="menu-content"></ion-router-outlet>
+</ion-split-pane>
+

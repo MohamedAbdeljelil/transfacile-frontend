@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  (click)="backbtn()" color="primary">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button mode="ios"  (click)="skipbtn()" color="dark" fill="clear">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content fullscreen class="ion-padding" scroll-y="false">
+    <ion-slides [pager]="slides.isEnd()" #mainSlides>
+
+      <ion-slide>
+        <div class="slide">
+          <img src="../../../assets/img/family-travel-bus-tour-flat-vector-concept_81522-4911.jpg"/>
+          <h2>Welcome</h2>
+          <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.</p>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="../../../assets/img/bus_no_results.svg"/>
+        <h2>What is Ionic?</h2>
+        <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="wave-container">
+
+
+          <mat-vertical-stepper >
+
+            <mat-step >
+              <ng-template matStepLabel>First</ng-template>
+              <div>
+                <img src="./../../../assets/img/Wear-a-facemask.png"/>
+                <ion-button shape="round" size="small" class="ion-text-capitalize">You must wear your mask</ion-button>
+
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Second</ng-template>
+              <div>
+                <img src="./../../../assets/img/check.svg">
+                <ion-button shape="round" size="small" class="ion-text-capitalize">Check your Tempreture</ion-button>
+
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <div>
+                <img src="./../../../assets/img/Mask-Wearing-Social-Distancing.png">
+              </div>
+              <ng-template matStepLabel>Last</ng-template>
+              <div>
+                <ion-button color="primary" href="/home" shape="round" size="small" class="ion-text-capitalize">Respect social distancing</ion-button>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="goNext()">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>

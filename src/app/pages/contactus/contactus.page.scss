@@ -1,0 +1,55 @@
+ion-content {
+  --background: #f6f6f6;
+  h2{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+  h4{
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 0px;
+  }
+  p{
+    font-weight: bold;
+  }
+}
+ion-list{
+  ion-list-header{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+  }
+  ion-icon {
+    color: #FFFFFF;
+    padding: 4px;
+    border-radius: 50%;
+  }
+  border-radius: 5px;
+}
+img {
+  margin: auto;
+  display: table;
+  width: 200px;
+}
+
+.backround1{
+  background: #33cc66;
+}
+.backround2{
+  background: var(--ion-color-google);
+}
+.backround3{
+  background: var(--ion-color-primary);
+}
+.full-width{
+  width: 100%;
+}
+mat-card {
+  //margin-bottom: 16px;
+
+  mat-card-header {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: #0d0d0d;
+  }
+}
+

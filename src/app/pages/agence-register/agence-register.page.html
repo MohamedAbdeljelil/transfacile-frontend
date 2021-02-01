@@ -1,0 +1,268 @@
+<!--************************************** Partie avec ionic *********************************-->
+<!--  &lt;!&ndash; Agence Register &ndash;&gt;-->
+<!--    <form  [formGroup]="agenceRegisterForm" (ngSubmit)="onSubmitAgence()" novalidate>-->
+
+<!--      <ion-item >-->
+<!--        <ion-label position="floating">Nom juridique de la société</ion-label>-->
+<!--        <ion-input formControlName="nomSociete" type="text" required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error ">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.nomSociete" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.nomSociete">{{formSocRegistErrors.nomSociete}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item >-->
+<!--        <ion-label position="floating">Matricule fiscal</ion-label>-->
+<!--        <ion-input formControlName="matriculeFis" type="text" required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error ">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.matriculeFis" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.matriculeFis">{{formSocRegistErrors.matriculeFis}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item >-->
+<!--        <ion-label position="floating">N&#176; affiliation CNSS</ion-label>-->
+<!--        <ion-input formControlName="NumAffiCnss" type="text" required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error ">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.NumAffiCnss" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.NumAffiCnss">{{formSocRegistErrors.NumAffiCnss}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Adresse</ion-label>-->
+<!--        <ion-input formControlName="adresse"  type="text"  required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.adresse" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.adresse">{{formSocRegistErrors.adresse}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Gouvernorats</ion-label>-->
+<!--        <ion-select interface="popover" formControlName="gouvernorats" (ionChange)="optionChanged($event)">-->
+<!--          <ion-select-option *ngFor="let gouvernorat of gouvernoratsTunisie" value="{{gouvernorat}}">{{gouvernorat}}</ion-select-option>-->
+<!--        </ion-select>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.gouvernorats" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.gouvernorats">{{formSocRegistErrors.gouvernorats}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Code postal</ion-label>-->
+<!--        <ion-input formControlName="codePost"  type="number"  required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.codePost" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.codePost">{{formSocRegistErrors.codePost}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Localité</ion-label>-->
+<!--        <ion-input formControlName="local"  type="text"  required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.local" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.local">{{formSocRegistErrors.local}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label  position="floating">Télephone</ion-label>-->
+<!--        <ion-input formControlName="tel" type="number" required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.tel" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.tel">{{formSocRegistErrors.tel}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Email</ion-label>-->
+<!--        <ion-input formControlName="emailSociete" type="email" required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.emailSociete" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.emailSociete">{{formSocRegistErrors.emailSociete}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Domaine d'activité</ion-label>-->
+<!--        <ion-select interface="popover" formControlName="domActivite" (ionChange)="optionChanged($event)">-->
+<!--          <ion-select-option *ngFor="let domActivite of domActivSociete" value="{{domActivite}}">{{domActivite}}</ion-select-option>-->
+<!--        </ion-select>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error ">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.domActivite" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.domActivite">{{formSocRegistErrors.domActivite}}&#42;</small>-->
+<!--      </ion-row>-->
+
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Nom et prénom du contact au sein de l'agence</ion-label>-->
+<!--        <ion-input formControlName="nomPrenomContactAgence"  type="text"  required></ion-input>-->
+<!--      </ion-item>-->
+<!--      <ion-row class="error">-->
+<!--        <ion-icon *ngIf="formSocRegistErrors.nomPrenomContactAgence" name="information-circle-outline"></ion-icon>-->
+<!--        <small *ngIf="formSocRegistErrors.nomPrenomContactAgence">{{formSocRegistErrors.nomPrenomContactAgence}}&#42;</small>-->
+<!--      </ion-row>-->
+
+<!--      <ion-list>-->
+<!--        <ion-radio-group value="grape" formControlName="formJurique">-->
+<!--          <ion-list-header>-->
+<!--            <ion-label>Forme juridique</ion-label>-->
+<!--          </ion-list-header>-->
+<!--          <ion-item *ngFor="let formJur of formJuridique">-->
+<!--            <ion-label>{{formJur}}</ion-label>-->
+<!--            <ion-radio slot="start" color="success" value="{{formJur}}"></ion-radio>-->
+<!--          </ion-item>-->
+<!--        </ion-radio-group>-->
+<!--      </ion-list>-->
+<!--    </form>-->
+
+<!--  <ion-button type="submit" [disabled]="!agenceRegisterForm.valid" >Envoyer</ion-button>-->
+<!--<p>{{ formInformAgence.value}} {{ formInformAgence.valid }}</p>-->
+<mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="formInformAgence" >
+        <form [formGroup]="formInformAgence">
+            <ng-template matStepLabel>Information génerale de l'agence</ng-template>
+            <mat-form-field>
+                <mat-label>Nom de l'agence</mat-label>
+                <input formControlName="nomSociete" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.nomSociete">{{formSocRegistErrors.nomSociete}}</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Matricule Fiscale</mat-label>
+                <input formControlName="matriculeFis" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.matriculeFis">{{formSocRegistErrors.matriculeFis}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>N&#176; affiliation CNSS</mat-label>
+                <input formControlName="NumAffiCnss" matInput required type="number">
+                <mat-error *ngIf="formSocRegistErrors.NumAffiCnss">{{formSocRegistErrors.NumAffiCnss}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Secteurs d'activite</mat-label>
+                <mat-select formControlName="secActivite" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let activite of secActivSociete" value="{{activite}}">
+                        {{activite}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formSocRegistErrors.secActivite"></mat-error>
+            </mat-form-field>
+
+            <ion-list>
+                <ion-radio-group formControlName="formJur" value="grape">
+                    <ion-list-header>
+                        <ion-label>Forme juridique</ion-label>
+                    </ion-list-header>
+                    <ion-item *ngFor="let formJur of formJuridique">
+                        <ion-label>{{formJur}}</ion-label>
+                        <ion-radio color="success" slot="start" value="{{formJur}}"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+        </form>
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="formAdresseAgence" [editable]="formInformAgence.valid">
+        <form [formGroup]="formAdresseAgence">
+            <ng-template matStepLabel>
+                <div>Adresse</div>
+            </ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Gouvernorats</mat-label>
+                <mat-select formControlName="gouvernorats" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let gouv of gouvernoratsTunisie" value="{{gouv}}">
+                        {{gouv}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formSocRegistErrors.gouvernorats">Please choose an animal</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Adresse Exacte</mat-label>
+                <input formControlName="adresse" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.adresse">{{formSocRegistErrors.adresse}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Localité</mat-label>
+                <input formControlName="local" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.local">{{formSocRegistErrors.local}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Code postal</mat-label>
+                <input formControlName="codePost" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.codePost"
+                           type="number">{{formSocRegistErrors.codePost}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Télephone</mat-label>
+                <input formControlName="tel" matInput required type="tel">
+                <mat-error *ngIf="formSocRegistErrors.tel">{{formSocRegistErrors.tel}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="emailSociete" matInput required type="email">
+                <mat-error *ngIf="formSocRegistErrors.emailSociete">{{formSocRegistErrors.emailSociete}}</mat-error>
+            </mat-form-field>
+        </form>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="formContactAgence" [editable]="formAdresseAgence.valid">
+        <form [formGroup]="formContactAgence" novalidate>
+            <ng-template matStepLabel>
+                <div>Personne à contacter</div>
+            </ng-template>
+
+            <mat-form-field>
+                <mat-label>Nom et prénom</mat-label>
+                <input formControlName="nomPrenomContact" matInput required>
+                <mat-error
+                        *ngIf="formSocRegistErrors.nomPrenomContact">{{formSocRegistErrors.nomPrenomContact}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Qualité</mat-label>
+                <input formControlName="qualite" matInput required>
+                <mat-error *ngIf="formSocRegistErrors.qualite">{{formSocRegistErrors.qualite}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Télephone</mat-label>
+                <input formControlName="telContact" matInput required type="tel">
+                <mat-error *ngIf="formSocRegistErrors.telContact">{{formSocRegistErrors.telContact}}</mat-error>
+            </mat-form-field>
+        </form>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [editable]="formContactAgence.valid">
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button (click)="stepper.reset()" mat-button>Reset</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>
+<ion-button mode="ios" (click)="onSubmit()" [disabled]="!isFormValid()" color="tertiary" expand="block" shape="round"
+            type="submit">Inscription
+</ion-button>
+
+

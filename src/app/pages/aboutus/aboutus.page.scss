@@ -1,0 +1,13 @@
+ion-content {
+  --background: #f6f6f6;
+  h1{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+}
+img {
+  margin: auto;
+  display: table;
+  width: 200px;
+}

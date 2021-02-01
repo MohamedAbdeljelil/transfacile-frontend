@@ -1,0 +1,56 @@
+<app-header></app-header>
+<ion-content >
+    <div class="headers">
+        <h2>Elon Musk</h2>
+        <div class="space-between">
+            <div class="followings">
+                <ion-badge color="primary" mode="ios">42</ion-badge>
+                <p>Abonnés</p>
+            </div>
+            <div class="followings">
+                <ion-badge color="primary" mode="ios">102</ion-badge>
+                <p>Abonnements</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+    <div class="border-blue">
+        <div class="border-white">
+            <div class="img-box">
+                <img src="../../../assets/img/elon-musk-image.jpg">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="ion-padding">
+    <ion-item lines="none">
+        <ion-label>
+<!--             {{"Email" | translate}}-->
+            {{User?.email}}
+        </ion-label>
+        <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label>
+            {{User?.telephone}}
+        </ion-label>
+        <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
+    </ion-item>
+        <ion-item lines="none">
+            <ion-label>
+                {{User?.dateNaiss | date}}
+            </ion-label>
+            <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label>
+                {{User?.fonction}}
+            </ion-label>
+            <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
+        </ion-item>
+        <ion-button color="danger" mode="ios" expand="block">
+            <ion-icon slot="start" name="card"></ion-icon>
+            Ajouter une carte Bancaire
+        </ion-button>
+    </div>
+</ion-content>

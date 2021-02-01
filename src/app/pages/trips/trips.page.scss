@@ -1,0 +1,83 @@
+ion-header{
+  ion-toolbar{
+    --background: #f6f6f6;
+    padding: 0px;
+    ion-button{
+      margin-left: 0px;
+    }
+  }
+}
+
+ion-item {
+  --background: #f6f6f6;
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+  }
+}
+
+ion-searchbar {
+  --box-shadow: none;
+  --border-radius: 10px;
+  opacity: .96;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  //margin: 12px 0;
+}
+
+ion-col {
+  padding: 0;
+}
+
+// ::ng-deep .searchbar-search-icon {
+//   color: #316dd0 !important;
+// }
+
+ion-content {
+  --background: #f6f6f6;
+  h5{
+    margin-top: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+  }
+}
+
+ion-card {
+  //padding: 0px;
+  box-shadow: none;
+  box-shadow: 0px 3px 45px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 20px;
+
+  ion-img {
+    width: 200px;
+    margin: 0 auto;
+  }
+  ion-card-subtitle{
+    margin-top: 13px;
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: large;
+  }
+}
+.line{
+  border: 1px dashed #19d959;
+  display: flex;
+}
+.ion-icon {
+  font-size: 64px;
+}
+div{
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+span{
+  margin-left: 0px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+//New Css Style
+
+
+

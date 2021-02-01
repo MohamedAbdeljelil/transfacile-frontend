@@ -1,0 +1,132 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title class="ion-text-center custom-font">Sign Up</ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="primary" routerLink="/">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <div class="ion-padding">
+        <ion-segment [(ngModel)]="segmentModel" color="primary" (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="user" layout="icon-start">
+                <ion-icon name="person-outline"></ion-icon>
+                <ion-label>Utilisateur</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="agence" layout="icon-start">
+                <ion-icon name="business-outline"></ion-icon>
+                <ion-label>Agence</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+        <!-- Passager Register -->
+        <div class="ion-padding" *ngIf="segmentModel =='user'">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+<!--                <ion-item>-->
+<!--                    <ion-label position="floating">Type d'utilisateur</ion-label>-->
+<!--                    <ion-select interface="popover" formControlName="roles" [(ngModel)]="optionModel"-->
+<!--                                (ionChange)="optionChanged($event)">-->
+<!--                        <ion-select-option value="passager">Passager</ion-select-option>-->
+<!--                        <ion-select-option value="agent">Agent</ion-select-option>-->
+<!--                    </ion-select>-->
+<!--                </ion-item>-->
+<!--                <ion-row class="error">-->
+<!--                    <ion-icon *ngIf="formRegisterErrors.roles" name="information-circle-outline"></ion-icon>-->
+<!--                    <small *ngIf="formRegisterErrors.roles">{{formRegisterErrors.roles}}&#42;</small>-->
+<!--                </ion-row>-->
+                <ion-item>
+                    <ion-label position="floating">Nom</ion-label>
+                    <ion-input class="input" type="text" formControlName="nom" required></ion-input>
+                </ion-item>
+                <ion-row class="error ">
+                    <ion-icon *ngIf="formRegisterErrors.nom" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.nom" >{{formRegisterErrors.nom}}&#42;</small>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Prenom</ion-label>
+                    <ion-input class="input" type="text" formControlName="prenom" required></ion-input>
+                </ion-item>
+                <ion-row class="error">
+                    <ion-icon *ngIf="formRegisterErrors.prenom" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.prenom">{{formRegisterErrors.prenom}}&#42;</small>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Username</ion-label>
+                    <ion-input class="input" type="text" formControlName="username" required></ion-input>
+                </ion-item>
+                <ion-row class="error">
+                    <ion-icon *ngIf="formRegisterErrors.username" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.username">{{formRegisterErrors.username}}&#42;</small>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Date de naissance</ion-label>
+                    <ion-datetime max="2002-12-31" (ionChange)="getDate($event)" formControlName="dateNaiss" [value]="defaultDate"
+                                  required></ion-datetime>
+                </ion-item>
+                <ion-row class="error">
+                    <ion-icon *ngIf="formRegisterErrors.dateNaiss" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.dateNaiss">{{formRegisterErrors.dateNaiss}}&#42;</small>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Telephone</ion-label>
+                    <ion-input class="input" type="number" formControlName="telephone" required></ion-input>
+                </ion-item>
+                <ion-row class="error ">
+                    <ion-icon *ngIf="formRegisterErrors.telephone" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.telephone">{{formRegisterErrors.telephone}}&#42;</small>
+                </ion-row>
+
+                <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input class="input" type="email" formControlName="email" required></ion-input>
+                </ion-item>
+                <ion-row class="error ">
+                    <ion-icon *ngIf="formRegisterErrors.email" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.email" >{{formRegisterErrors.email}}&#42;</small>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Mot de passe</ion-label>
+                    <ion-input formControlName="password" type="password" required></ion-input>
+                </ion-item>
+                <ion-row class="error ">
+                    <ion-icon *ngIf="formRegisterErrors.password" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.password">{{formRegisterErrors.password}}&#42;</small>
+                </ion-row>
+                <ion-item >
+                    <ion-label position="floating">Fonction</ion-label>
+                    <ion-input formControlName="fonction" type="text"></ion-input>
+                </ion-item>
+                <ion-row class="error ">
+                    <ion-icon *ngIf="formRegisterErrors.fonction" name="information-circle-outline"></ion-icon>
+                    <small *ngIf="formRegisterErrors.fonction">{{formRegisterErrors.fonction}}&#42;</small>
+                </ion-row>
+
+<!--                <ion-button type="submit" color="tertiary" expand="block" shape="round"-->
+<!--                            [disabled]="!registerForm.valid">Inscription-->
+<!--                </ion-button>-->
+
+                <br>
+                <div class="container-form-btn">
+                    <button type="submit" [disabled]="!registerForm.valid" class="form-btn custom-font">
+                        Inscription
+                    </button>
+                </div>
+                <ion-item lines="none" *ngIf="isSignUpFailed" class="error">
+                    <ion-icon color="alert" name="sad-outline" slot="start"></ion-icon>
+                    Signup failed!<br/>{{ errorMessage }}
+                </ion-item>
+                <ion-item lines="none" *ngIf="isSuccessful" class="ok">
+                    <ion-icon color="successful" slot="start" name="happy-outline"></ion-icon>
+                    Your registration is successful!
+                </ion-item>
+            </form>
+        </div>
+        <div *ngIf="segmentModel=='agence'">
+            <app-agence-register></app-agence-register>
+        </div>
+
+    </div>
+</ion-content>

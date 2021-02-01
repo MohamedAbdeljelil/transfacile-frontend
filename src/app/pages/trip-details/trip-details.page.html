@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/trips" (click)="closeModal()" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Trip Details</ion-title>
+    <ion-avatar slot="end">
+      <ion-img src="../../../assets/img/profile_women.png"></ion-img>
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <ion-row>
+      <ion-col size="4" class="ion-text-center ion-margin-top">
+        <p>FROM</p>
+      </ion-col>
+      <ion-col size="4">
+      </ion-col>
+      <ion-col size="4" class="ion-text-center ion-margin-top">
+        <p>TO</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-bottom">
+      <ion-col size="4" class="ion-text-center">
+        <h1>{{trip.depStation}}</h1>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">
+        <ion-icon src="../../../assets/img/Tour-Bus.svg"></ion-icon>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">
+        <h1>{{trip.arrStation}}</h1>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+          <ion-col size="12" class="ion-text-center ion-margin-bottom">
+            <h2>4 Seats</h2>
+          </ion-col>
+      </ion-row> -->
+  </div>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="6">
+            <img src="../../../assets/img/sntri-societe-nationale-de-transport-interurbain.png">
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <button class="btn btn-success">{{trip.price}} DT</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-margin-top">
+            <div class="line ion-margin-bottom"></div>
+            <ion-card-subtitle class="ion-text-center">May 19, 2021</ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3" class="ion-margin-top">
+            <ion-card-subtitle class="ion-text-center">{{getTimeFromString(trip.heure_dep)}}</ion-card-subtitle>
+          </ion-col>
+          <ion-col size="1" class="ion-margin-top ion-text-right">
+            <ion-icon name="bus" color="success"></ion-icon>
+          </ion-col>
+          <ion-col size="4" class="ion-margin-top ">
+            <div class="milines ion-margin-bottom"></div>
+            <p class="ion-text-center">{{getDiffBetweenDepAndArr(trip.heure_dep,trip.heure_arriv)}}</p>
+          </ion-col>
+          <ion-col size="1" class="ion-margin-top ion-text-left ">
+            <ion-icon name="location" color="primary"></ion-icon>
+          </ion-col>
+          <ion-col size="3" class="ion-margin-top">
+            <ion-card-subtitle class="ion-text-center">{{getTimeFromString(trip.heure_arriv)}}</ion-card-subtitle>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="ion-text-left">
+            <ion-button fill="clear" (click)="openModal()" color="success" mode="ios">
+              <ion-icon *ngIf="!isFavorite" name="heart-outline"></ion-icon>
+              <ion-icon *ngIf="isFavorite" name="heart"></ion-icon>
+            </ion-button>
+          </ion-col>
+          
+          <ion-col size="6" class="ion-text-right">
+            <ion-button fill="clear" color="success" mode="ios" (click)="onChargeCheckout()">
+                        Checkout
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

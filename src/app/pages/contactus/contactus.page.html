@@ -1,0 +1,58 @@
+<app-header></app-header>
+<ion-content class="ion-padding">
+    <img src="../../../assets/img/contact-us-figure.png">
+    <h2 class="ion-text-capitalize ion-text-left ion-padding-top">Contact Us</h2>
+    <ion-list>
+        <ion-list-header>Our contact details</ion-list-header>
+        <ion-item lines="none" class="input">
+            <ion-icon class="backround1" slot="start" name="call"></ion-icon>
+            <ion-label position="fixed">
+                <h4>Mobile</h4>
+                <p>+21653794374/+21695406055</p></ion-label>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-icon class="backround2" slot="start" name="logo-google"></ion-icon>
+            <ion-label >
+                <h4 class="ion-no-padding">Email</h4>
+                <a>technogm@gmail.com</a>
+            </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+            <ion-icon class="backround3" slot="start" name="location"></ion-icon>
+            <ion-label class="ion-text-wrap ion-text-capitalize">
+                <h4>Address</h4>
+                <p>Sidi Hassine ,Tunis </p>
+            </ion-label>
+        </ion-item>
+      </ion-list>
+    <mat-card class="ion-margin-top">
+        <mat-card-header>
+            <mat-card-title class="ion-text-wrap">Feel free to drop us a message</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Your name</mat-label>
+                <input matInput type="text"
+                       autocomplete="on" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Your email</mat-label>
+                <input matInput type="email"
+                       autocomplete="on" required>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Subject</mat-label>
+                <input matInput type="text" max="4"
+                       autocomplete="on" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Your Feedback</mat-label>
+                <textarea matInput placeholder="Your Feedback" rows=12 required></textarea>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+</ion-content>

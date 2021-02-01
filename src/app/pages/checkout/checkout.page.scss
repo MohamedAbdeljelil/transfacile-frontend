@@ -1,0 +1,68 @@
+ion-header{
+  ion-toolbar{
+    --background: #f6f6f6;
+    padding: 0px;
+    ion-button{
+      margin-left: 0px;
+    }
+  }
+}
+ion-content {
+  --background: #f6f6f6;
+  h5{
+    margin-top: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+  }
+}
+mat-panel-title {
+  flex-basis: 0;
+}
+mat-panel-description {
+  flex-basis: 100%;
+  font-weight: bolder;
+  color: #0d0d0d;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+mat-card{
+  margin-bottom: 16px;
+  mat-card-header{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: #0d0d0d;
+  }
+  mat-list-option{
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  
+}
+ion-item{
+  --background: #f6f6f6;
+  h1{
+    font-family: "Josefin Sans", sans-serif;
+    color: var(--ion-color-primary);
+    margin-bottom: -20px;
+  }
+  p{
+    font-family: "Josefin Sans", sans-serif;
+  }
+}
+.mat-list-icon {
+  color: rgb(66, 223, 35);
+}
+.mat-line{
+  font-family: "Josefin Sans", sans-serif;
+}
+h1{
+  font-weight: bolder;
+}
+// .mat-action-row {
+//   place-content: space-between;
+// }
+//mat-grid-tile {
+//  background: lightblue;
+//}
+
