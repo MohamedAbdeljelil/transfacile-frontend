@@ -23,7 +23,7 @@ export class TripsPage implements OnInit {
 
   ngOnInit() {
     this.trips = this.tripsSerice.getTrips();
-    this.trips.sort();
+    // this.trips.sort();
     console.log(this.trips);
     // this.fillListTrip(this.depListTrip,this.arrListTrip);
     //List of Trip for Dep Station

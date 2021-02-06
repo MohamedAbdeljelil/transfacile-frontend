@@ -9,12 +9,7 @@
                     <h2>TransFacile</h2>
                 </ion-label>
             </div>
-            <div class="action-button">
-                <ion-button (click)="logoutButton()">
-                    <ion-icon name="log-out-outline"></ion-icon>
-                    se déconnecter
-                </ion-button>
-            </div>
+
             <ion-list lines="none" class="menu-items">
                 <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
                     <ion-item [routerLink]="page.path" routerDirection="root" routerLinkActive="active-item">

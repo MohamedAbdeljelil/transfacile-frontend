@@ -8,6 +8,7 @@ import {validationMessage} from "../../shared/validationMessage";
 import {Utilities} from "../../shared/Utilities";
 import {AlertController, LoadingController, ToastController} from "@ionic/angular";
 import {TranslateService} from "@ngx-translate/core";
+import {User} from "../../models/User";
 
 
 @Component({
@@ -24,6 +25,8 @@ export class LoginPage implements OnInit {
     formLoginErrors = formErrors.login;
     validationLoginMessage = validationMessage.login;
     utilities = new Utilities();
+
+    private user : User;
 
     roles: string[] = [];
 
@@ -50,8 +53,8 @@ export class LoginPage implements OnInit {
             .subscribe(data => this.utilities.onValueChanged(data, this.loginForm, this.formLoginErrors, this.validationLoginMessage));
     }
 
-Language(p){
- p =='fr'?this.translate.use('fr'):this.translate.use('en');
+    Language(p){
+        p =='fr'?this.translate.use('fr'):this.translate.use('en');
 }
     async onSubmit() {
         console.log(this.loginForm);
@@ -64,6 +67,7 @@ Language(p){
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
+                // this.getCurrentUser();
                 this.route.navigateByUrl('/tabs/booking');
             },
              err => {

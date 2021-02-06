@@ -91,6 +91,7 @@ export class BookingPage implements OnInit {
                         this.arrLists.forEach(arrTrip=>{
                             this.arrTrips.push(arrTrip);
                         });
+                        
                         this.fillListTrip(this.depTrips,this.arrTrips);
                         this.trips=[];
                     },
@@ -137,17 +138,17 @@ export class BookingPage implements OnInit {
                 if (depTrip.line_no === arrTrip.line_no){
                     if (depTrip.stop_sequence < arrTrip.stop_sequence){
 
-                        this.trip = new Trip(i, depTrip.stop_sequence,
+                        this.trip = new Trip(null, depTrip.stop_sequence,
                             depTrip.line_name, depTrip.line_no, depTrip.stop, arrTrip.stop,
-                            0, 0, depTrip.dep_time, arrTrip.dep_time);
+                            0, 0, depTrip.dep_time, arrTrip.dep_time,null);
                         this.trips.push(this.trip);
                         console.log(this.trips);
-                        i=i+1;
+
                     }
                     else {
-                        this.trip = new Trip(i, depTrip.stop_sequence,
+                        this.trip = new Trip(null, depTrip.stop_sequence,
                             depTrip.line_name, depTrip.line_no, depTrip.stop, arrTrip.stop,
-                            0, 0, depTrip.arr_time, arrTrip.arr_time);
+                            0, 0, depTrip.arr_time, arrTrip.arr_time,null);
                         this.trips.push(this.trip);
                         console.log(this.trips);
                         i=i+1;

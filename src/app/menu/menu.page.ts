@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterEvent} from "@angular/router";
 import {MenuController} from "@ionic/angular";
+import {TokenStorageService} from "../services/token-storage.service";
 
 @Component({
     selector: 'app-menu',
@@ -43,7 +44,7 @@ export class MenuPage implements OnInit {
         }
     ]
 
-    constructor(private router: Router, private menuController: MenuController) {
+    constructor(private router : Router, private menuController: MenuController) {
         this.router.events.subscribe((event: RouterEvent) => {
             this.activePath = event.url
         })
@@ -54,7 +55,9 @@ export class MenuPage implements OnInit {
 
 
     logoutButton() {
-        this.menuController.close("main-menu");
-        this.router.navigate(['/tabs/menu/login'])
+        this.menuController.isOpen("menu-content").then(()=>{
+
+        });
+
     }
 }

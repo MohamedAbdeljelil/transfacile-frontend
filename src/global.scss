@@ -53,4 +53,9 @@
     color: var(--ion-color-success);
   }
 }
+ion-menu-button{
+  --background-focused : blue;
+  --background :  #FFFFFF;
+  --border-radius: 50%;
+}
 

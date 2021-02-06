@@ -1,5 +1,7 @@
 {
   "name": "transfacile-frontend",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {User} from "../models/User";
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
 
@@ -12,6 +13,7 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class AuthentificationService {
+    currentUser :User;
 
     constructor(private http: HttpClient) {
     }
@@ -41,5 +43,11 @@ export class AuthentificationService {
     }
     public getUserById(id : number) : Observable<any>{
         return this.http.get(AUTH_API + 'user/'+id);
+    }
+    setCurrentUser(user){
+        this.currentUser=user;
+    }
+    getCurrentUser(){
+        return this.currentUser;
     }
 }

@@ -1,9 +1,13 @@
 import { Router } from '@angular/router';
 import { TripsPage } from './../trips/trips.page';
 import { Trip } from './../../models/Trip';
-import {AlertController, ModalController} from '@ionic/angular';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
 import {FavoriteTripService} from "../../services/favorite-trip.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {AuthentificationService} from "../../services/authentification.service";
+import {User} from "../../models/User";
+import {TripsService} from "../../services/trips.service";
 
 @Component({
   selector: 'app-trip-details',
@@ -16,15 +20,61 @@ export class TripDetailsPage implements OnInit {
   isFavorite = false;
   AlertButtonText ="Add";
   idFavorite : number;
+  favTrips : Trip[] = [];
+  unFavTrip : Trip;
+  // private currentuUer : any;
+  private currentUser : User;
+  private Token : any;
+  private id : number;
+  private listTrips : Trip[];
 
   constructor(private modalController: ModalController,private router : Router,
-              private alertController : AlertController,
-              private favTripService : FavoriteTripService) { }
+              private alertController : AlertController,private tripService : TripsService,
+              private favTripService : FavoriteTripService,private plateform : Platform
+  ,private tokenStorage: TokenStorageService,private authService : AuthentificationService) {
+                this.plateform.ready().then(()=>{
+                  // this.loadFavTrips();
+                  // this.loadIdFavrTrips();
+
+                });
+               }
 
   ngOnInit() {
     console.log(this.trips);
     console.log(this.trip);
+    this.tripService.getListTrips().subscribe((results)=>{
+      this.listTrips = results;
+      console.log(this.listTrips);
+    })
+    console.log(this.tokenStorage.getUser());
+    this.Token=this.tokenStorage.getUser();
+    // console.log(this.Token.id)
+    this.id=this.Token.id;
+    console.log(this.id);
+    this.authService.getUserById(this.id).subscribe(
+        data => {
+          this.currentUser=data;
+          console.log(data);
+          this.isFavorite = this.isInTripFav(this.trip);
+          // this.currentUser=this.user;
+        },
+        error => {
+          console.log(error);
+        }
+    );
   }
+
+  // loadFavTrips(){
+  //   this.favTripService.getAllFavouriteTrips().then((results)=>{
+  //     this.favTrips = results;
+  //   });
+  // }
+  // loadIdFavrTrips(){
+  //   this.favTripService.getAllIdFavouriteTrips().then((ids)=>{
+  //     this.idFavorite = ids;
+  //     console.log(this.idFavorite);
+  //   });
+  // }
   async closeModal() {
     this.modalController.dismiss();
   }
@@ -83,20 +133,19 @@ export class TripDetailsPage implements OnInit {
             handler: () => {
               console.log('Confirm Ok');
               if(this.isFavorite){
-                this.favTripService.UnfavouriteTrip(this.trip).then(()=>{
-                      this.isFavorite=false;
-                })
+                this.unFavTrip = this.isTripExistInDB(this.trip);
+                if(this.unFavTrip!==null){
+                  this.unfovariteTrip(this.isTripExistInDB(this.unFavTrip));
+                  this.isFavorite=false;
+                }
               }
               else{
-                this.favTripService.setTripId(this.idFavorite).then((id : number)=>{
-                  this.idFavorite = id;
-                  console.log(this.idFavorite);
-                  console.log(this.idFavorite);
-                  this.trip.trip_id=this.idFavorite;
-                  console.log(this.trip);
-                });
                 console.log(this.trip);
-                this.favTripService.favoriteTrip(this.trip).then(()=>{
+                if(this.trip.users){
+                  this.trip.users= new Array<User>();
+                  this.trip.users.push(this.currentUser);
+                }
+                this.tripService.saveTrip(this.trip).subscribe(()=>{
                         this.isFavorite=true;
                 });
               }
@@ -111,6 +160,42 @@ export class TripDetailsPage implements OnInit {
     this.AlertButtonText = "Unfavorite";
   else
     this.AlertButtonText = "Add";
+  }
+  isInTripFav(trip : Trip) {
+    // let toKeepTrips :Trip[]=[];
+    if(this.isTripExistInDB(trip)!==null){
+      if(trip.users!==null && trip.users.indexOf(this.currentUser)!==-1){
+              return true;
+      }
+    }
+    return false;
+  }
+
+
+  isTripExistInDB(trip) : Trip{
+    if(this.listTrips){
+      for (let element of this.listTrips) {
+        if (element.depStation === trip.depStation && element.arrStation === trip.arrStation
+            && element.heure_dep === trip.heure_dep && element.heure_arriv === trip.heure_arriv){
+          return element;
+        }
+      }
+    }
+    return null;
+  }
+  unfovariteTrip(trip:Trip){
+    let listUsersToKeep : User[]=[];
+    let indexUser = trip.users.indexOf(this.currentUser);
+    if(indexUser!==-1){
+      listUsersToKeep.slice(0,indexUser);
+      console.log(listUsersToKeep);
+      listUsersToKeep.slice(indexUser+1,trip.users.length);
+    }
+    trip.users=listUsersToKeep;
+    console.log(trip.users);
+    this.tripService.updateTrip(trip.trip_id,trip).subscribe((res)=>{
+      console.log(res);
+    });
   }
 
 }

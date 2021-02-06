@@ -1,7 +1,18 @@
-<app-header></app-header>
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button color="custom"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+                <ion-button color="primary" fill="clear" (click)="logoutButton()">
+                    <ion-icon  name="log-out-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 <ion-content >
     <div class="headers">
-        <h2>Elon Musk</h2>
+        <h2 class="ion-text-capitalize">{{user?.nom}} {{user?.prenom}}</h2>
         <div class="space-between">
             <div class="followings">
                 <ion-badge color="primary" mode="ios">42</ion-badge>
@@ -26,25 +37,25 @@
     <ion-item lines="none">
         <ion-label>
 <!--             {{"Email" | translate}}-->
-            {{User?.email}}
+            {{user?.email}}
         </ion-label>
         <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
     </ion-item>
     <ion-item lines="none">
         <ion-label>
-            {{User?.telephone}}
+            {{user?.telephone}}
         </ion-label>
         <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
     </ion-item>
         <ion-item lines="none">
             <ion-label>
-                {{User?.dateNaiss | date}}
+                {{user?.dateNaiss | date}}
             </ion-label>
             <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
         </ion-item>
         <ion-item lines="none">
             <ion-label>
-                {{User?.fonction}}
+                {{user?.fonction}}
             </ion-label>
             <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
         </ion-item>

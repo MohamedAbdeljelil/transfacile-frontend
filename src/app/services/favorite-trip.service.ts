@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Trip} from "../models/Trip";
+import { Storage } from '@ionic/storage';
+
 const TRIPS_KEY = 'favoriteStations';
 const TRIP_KEY_ID = 'trip_id';
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteTripService {
-  id =0;
   //récupérer une instance de storage pour injection de dépendance
   constructor(private storage: Storage) { }
   //retourner une promesse contenant le tableau des IDs des avoris
   getAllFavouriteTrips() : Promise<Trip[]>{
     return this.storage.get(TRIPS_KEY);
+  }
+  getAllIdFavouriteTrips() : Promise<number>{
+    return this.storage.get(TRIP_KEY_ID);
   }
   //retourne un boolean  verifier un station est parmis les favoris
   //then est associé à des promesse donc il faut pas mettre boolean le type de retour
@@ -43,17 +47,20 @@ export class FavoriteTripService {
           toKeepTrips.push(element);
         }
       }
+      return this.storage.set(TRIPS_KEY,toKeepTrips);
     });
   }
-  setTripId(idTrip : number) : Promise<any>{
-    return this.storage.get(TRIP_KEY_ID).then((id : number)=>{
+  setTripId(idTrip : number) :Promise<number>{
+     return this.storage.get(TRIP_KEY_ID).then((id)=>{
       if(id){
         idTrip = id;
         id++;
+       return this.storage.set(TRIP_KEY_ID,id);
       }
       else
-        this.storage.set(TRIP_KEY_ID,0);
+        return this.storage.set(TRIP_KEY_ID,0);
     });
   }
+  
 
 }

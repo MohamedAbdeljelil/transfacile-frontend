@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageTranslationModule } from './services/language-translation/language-translation.module';
 import {MenuPageModule} from "./menu/menu.module";
 import { ClarityModule } from '@clr/angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,7 +28,15 @@ import { ClarityModule } from '@clr/angular';
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient]
             }
-        }), AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MenuPageModule,ClarityModule],
+        }), AppRoutingModule, 
+        HttpClientModule,
+        BrowserAnimationsModule, 
+        MenuPageModule,
+        ClarityModule,
+    IonicStorageModule.forRoot({
+        name: '__mydb',
+        driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })],
     providers: [
         LanguageTranslationModule,
         StatusBar,
