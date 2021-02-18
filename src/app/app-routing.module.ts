@@ -74,6 +74,10 @@ const routes: Routes = [
   {
     path: 'shared-modal',
     loadChildren: () => import('./modals/shared-modal/shared-modal.module').then( m => m.SharedModalPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
 ];
 

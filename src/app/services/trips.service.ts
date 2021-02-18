@@ -9,6 +9,8 @@ import {Observable} from "rxjs";
 export class TripsService {
   public host= "http://localhost:8080/api/test/trip";
   Trips = new Array<Trip>();
+
+
   constructor(private httpClient: HttpClient) { }
   getTrips(){
     return this.Trips;
@@ -21,8 +23,8 @@ export class TripsService {
     return this.httpClient.get<Trip[]>(this.host + "/all");
   }
 
-  public getTripById(id : number) {
-    return this.httpClient.get(this.host + "/"+id);
+  public getTripById(id : number) :Observable<Trip>{
+    return this.httpClient.get<Trip>(this.host + "/"+id);
   }
 
   public deleteTrip(id :number) {
@@ -36,4 +38,8 @@ export class TripsService {
   public updateTrip(id:number,data) {
     return this.httpClient.put(this.host+"/"+id, data);
   }
+
+
+
+
 }

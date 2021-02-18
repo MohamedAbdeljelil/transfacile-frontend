@@ -29,7 +29,7 @@ export class MenuPage implements OnInit {
         },
         {
             name: 'Avis',
-            path: '/rating',
+            path: '/feedback',
             iconame: "paper-plane-outline"
         },
         {

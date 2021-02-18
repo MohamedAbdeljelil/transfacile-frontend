@@ -10,6 +10,7 @@ import {LoginPage} from './login.page';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import {ClrIconModule} from "@clr/angular";
 @NgModule({
     imports: [
         CommonModule,
@@ -17,7 +18,9 @@ import { TranslateModule } from '@ngx-translate/core';
         IonicModule,
         LoginPageRoutingModule,
         ReactiveFormsModule,
-        TranslateModule    ],
+        TranslateModule,
+        ClrIconModule
+    ],
     declarations: [LoginPage]
 })
 export class LoginPageModule {

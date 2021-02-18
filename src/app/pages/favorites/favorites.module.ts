@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CheckoutPageRoutingModule } from './checkout-routing.module';
+import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
-import { CheckoutPage } from './checkout.page';
+import { FavoritesPage } from './favorites.page';
 import {MaterialModule} from "../../material.module";
 
 @NgModule({
@@ -14,10 +14,9 @@ import {MaterialModule} from "../../material.module";
     CommonModule,
     FormsModule,
     IonicModule,
-    CheckoutPageRoutingModule,
-    MaterialModule
-
+    FavoritesPageRoutingModule,
+      MaterialModule
   ],
-  declarations: [CheckoutPage]
+  declarations: [FavoritesPage]
 })
-export class CheckoutPageModule {}
+export class FavoritesPageModule {}

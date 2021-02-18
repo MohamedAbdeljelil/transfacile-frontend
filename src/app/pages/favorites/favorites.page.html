@@ -1,0 +1,85 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="custom"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Voyages Favoris
+    </ion-title>
+    <ion-avatar slot="end">
+      <ion-img src="../../../assets/img/profile.png"></ion-img>
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-align-items-center"  *ngIf="listFavTrips.length===0">
+    <img src="../../../assets/img/fav-route.png">
+    <p class="ion-text-wrap ion-text-center ion-padding-top">Mettez dans favoris vos voyages frequents  </p>
+    <ion-item class="ion-no-margin">
+      <h1>Etapes</h1>
+    </ion-item>
+
+    <ion-item *ngFor="let step of steps">
+      <ion-avatar slot="start">
+        <img [src]="step.icon">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{step.titre}}</h3>
+        <p class="ion-text-wrap">{{step.paragraph}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+          <mat-accordion class="headers-align" multi>
+            <mat-expansion-panel *ngFor="let trip of listFavTrips ;let i=index" [expanded]="step === i" (opened)="setStep(i)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+            <mat-icon color="primary">stars</mat-icon>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{trip.depStation}}
+            <mat-icon color="primary">multiple_stop</mat-icon>
+            {{trip.arrStation}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!-- <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput type="number" min="1">
+        </mat-form-field> -->
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>departure_board</mat-icon>
+            <h1 mat-line>{{trip.depStation}}</h1>
+            <div mat-line> {{getTimeFromString(trip.heure_dep)}} </div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon  mat-list-icon>where_to_vote</mat-icon>
+            <h1 mat-line>{{trip.arrStation}}</h1>
+            <div mat-line> {{getTimeFromString(trip.heure_arriv)}} </div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon  mat-list-icon>straighten</mat-icon>
+            <h1 mat-line>Distance</h1>
+            <div mat-line> 395 km </div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon  mat-list-icon>monetization_on</mat-icon>
+            <h1 mat-line>Price</h1>
+            <div mat-line> 19 DT</div>
+          </mat-list-item>
+        </mat-list>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="deleteFav(trip)">Supprimer</button>
+          <button *ngIf="step!==0" mat-button color="primary" (click)="prevStep()">Precedent</button>
+          <button *ngIf="step!==listFavTrips.length-1" mat-button color="primary" (click)="nextStep()">Suivant</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/tabs/booking']" router-animation="back">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,26 @@
+ion-content {
+  --background: #f6f6f6;
+  h2{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+  h4{
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 0px;
+  }
+  p{
+    font-weight: bold;
+  }
+}
+img {
+  margin: auto;
+  display: table;
+  width: 200px;
+}
+ion-icon{
+  font-size: 64px;
+}
+.full-width{
+  width: 100%;
+}

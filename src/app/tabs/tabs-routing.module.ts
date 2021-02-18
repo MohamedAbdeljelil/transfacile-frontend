@@ -12,6 +12,10 @@ const routes: Routes = [
                 loadChildren: () => import('../pages/booking/booking.module').then(m => m.BookingPageModule)
             },
             {
+                path: 'favorites',
+                loadChildren: () => import('../pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
+            },
+            {
                 path: 'ticket',
                 loadChildren: () => import('../pages/ticket/ticket.module').then(m => m.TicketPageModule)
             },

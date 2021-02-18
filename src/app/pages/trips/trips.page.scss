@@ -2,9 +2,6 @@ ion-header{
   ion-toolbar{
     --background: #f6f6f6;
     padding: 0px;
-    ion-button{
-      margin-left: 0px;
-    }
   }
 }
 
@@ -77,6 +74,12 @@ span{
   font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
 }
+img {
+  margin: auto;
+  display: table;
+  width: 200px;
+}
+
 //New Css Style
 
 

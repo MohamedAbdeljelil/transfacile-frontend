@@ -4,7 +4,7 @@
       <ion-back-button text="Details" defaultHref="/tabs/booking" color="primary"></ion-back-button>
     </ion-buttons>
     <ion-avatar slot="end">
-      <ion-img src="../../../assets/img/profile_women.png"></ion-img>
+      <ion-img src="../../../assets/img/profile.png"></ion-img>
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
@@ -13,123 +13,48 @@
   <div class="ion-padding">
     <mat-card>
       <mat-card-header>
-        Select your card
+        <mat-card-title>Credit card details</mat-card-title>
       </mat-card-header>
-
       <mat-card-content>
+        <mat-card-subtitle>Select your card</mat-card-subtitle>
         <mat-selection-list #cards>
           <mat-list-option  color="primary" *ngFor="let card of listOfCards" [value]="card">
             <img matListAvatar [src]="card.path">
             {{card.type}}
           </mat-list-option>
         </mat-selection-list>
-
-      </mat-card-content>
-    </mat-card>
-    <mat-accordion>
-      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon color="primary">grading</mat-icon>
-          </mat-panel-title>
-          <mat-panel-description>
-            Trip details
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <!-- <mat-form-field>
-          <mat-label>Age</mat-label>
-          <input matInput type="number" min="1">
-        </mat-form-field> -->
-        <mat-list>
-          <mat-list-item>
-            <mat-icon mat-list-icon>departure_board</mat-icon>
-            <h1 mat-line>Tunis</h1>
-            <div mat-line> 08:00 </div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon  mat-list-icon>where_to_vote</mat-icon>
-            <h1 mat-line>Sfax</h1>
-            <div mat-line> 14:00 </div>
-          </mat-list-item>  
-          <mat-list-item>
-            <mat-icon  mat-list-icon>straighten</mat-icon>
-            <h1 mat-line>Distance</h1>
-            <div mat-line> 395 km </div>
-          </mat-list-item> 
-          <mat-list-item>
-            <mat-icon  mat-list-icon>monetization_on</mat-icon>
-            <h1 mat-line>Price</h1>
-            <div mat-line> 19 DT</div>
-          </mat-list-item> 
-        </mat-list>
-        <mat-action-row>
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon color="primary">map</mat-icon>
-          </mat-panel-title>
-          <mat-panel-description>
-            Address
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Complete Address</mat-label>
-          <input matInput placeholder="" type="text" 
-              autocomplete="off" required>
-       </mat-form-field>
-
-        <mat-action-row>
-          <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon color="primary" >payment</mat-icon>
-          </mat-panel-title>
-          <mat-panel-description>
-            Credit card details
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <mat-form-field appearance="outline">
+        <div class="ion-padding-top">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Name on card</mat-label>
-          <input matInput placeholder="" type="text" 
-              autocomplete="off" required>
-      </mat-form-field>
+          <input matInput placeholder="" type="text"
+                 autocomplete="off" required>
+        </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Card Number</mat-label>
           <input matInput type="number"
-              autocomplete="off" required>
-       </mat-form-field>
+                 autocomplete="off" required>
+        </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Expire date</mat-label>
           <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
         </mat-form-field>
         <mat-datepicker #picker></mat-datepicker>
 
-       <mat-form-field appearance="outline">
-        <mat-label>CVC</mat-label>
-        <input matInput type="number" max="4"
-            autocomplete="off" required>
-     </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>CVC</mat-label>
+          <input matInput type="number" max="4"
+                 autocomplete="off" required>
+        </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-action-row>
+        <button mat-button color="primary" >Confirm Payment</button>
+      </mat-action-row>
+    </mat-card>
 
-        <mat-action-row>
-          <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="nextStep()">Confirm Payment</button>
-        </mat-action-row>
-      </mat-expansion-panel>
 
-    </mat-accordion>
   </div>
   <ion-item class="ion-margin-top">
     <h1>Standard</h1>

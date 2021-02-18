@@ -11,7 +11,6 @@ export class CheckoutPage implements OnInit {
   @ViewChild(MatSelectionList, {static: true})
   private selectionList: MatSelectionList;
 
-  step = 0;
   constructor() { }
 
   ngOnInit() {
@@ -31,17 +30,7 @@ export class CheckoutPage implements OnInit {
       path: '/assets/img/e-dinar.png',
     }
   ];
-  setStep(index: number) {
-    this.step = index;
-  }
 
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
 
   trip = [
     {

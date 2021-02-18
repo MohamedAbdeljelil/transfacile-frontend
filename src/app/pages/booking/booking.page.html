@@ -12,7 +12,7 @@
     <div class="header">
         <img class="img-pos" src="../../../assets/img/images_bus.jpg">
     </div>
-    <div class="padding">
+    <div class="padding ion-padding-top">
     <ion-list>
         <ion-item lines="none" class="input " (click)="openCitiesModal(departureStop,departureReturned)">
             <ion-icon slot="start" name="locate"></ion-icon>
@@ -28,6 +28,22 @@
             <ion-icon slot="start" name="calendar"></ion-icon>
             <ion-datetime placeholder="Date de depart" required></ion-datetime>
         </ion-item>
+        <!-- <ion-item lines="none" *ngIf="!validSearch(arrivalReturned,departureReturned)" class="ion-margin-top border-error">
+            <ion-icon color="alert" name="alert-circle" slot="start"></ion-icon>
+            <ion-label class="ion-text-wrap">Le lieux de départs et d'arrivée sont identiques.</ion-label>
+        </ion-item> -->
+        <div [hidden]="initSearch(arrivalReturned,departureReturned)"  class="alert alert-danger" role="alert">
+            <div class="alert-items">
+              <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="error-standard"></clr-icon>
+                </div>
+                <span class="alert-text">
+                    Les lieux de départ et d'arrivée sont identiques.
+                </span>
+              </div>
+            </div>
+          </div>
         <ion-button mode="ios" [disabled]="!validSearch(arrivalReturned,departureReturned)" class="ion-margin-top"
                     color="primary" expand="block" (click)="openTripsModal(departureReturned,arrivalReturned)">Rechercher</ion-button>
     </ion-list>

@@ -1,0 +1,38 @@
+<app-header>
+</app-header>
+
+<ion-content>
+  <img src="../../../assets/img/feedback.png">
+  <h2 class="ion-text-center ion-text-capitalize ion-no-padding">Feedback</h2>
+<div class="ion-padding">
+    <p class="ion-text-wrap">Une question ,une anomalie ou une suggestion d'amelioration sur l'application ?</p>
+    <form [formGroup]="feedBackForm">
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Poser une question</mat-label>
+          <mat-select formControlName="question" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let question of questions" value="{{question}}">
+              {{question}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formFeedbackError.question">{{formFeedbackError.question}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Votre avis</mat-label>
+        <textarea formControlName="message" matInput rows="6" required></textarea>
+        <mat-error *ngIf="formFeedbackError.message">{{formFeedbackError.message}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Votre email</mat-label>
+        <input  formControlName="email" matInput  type="email" required>
+        <mat-error *ngIf="formFeedbackError.email">{{formFeedbackError.email}}</mat-error>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="!feedBackForm.valid"  >Envoyer</button>
+    </form>
+</div>
+
+</ion-content>

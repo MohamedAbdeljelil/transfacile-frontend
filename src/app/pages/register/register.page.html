@@ -11,7 +11,7 @@
 
 <ion-content fullscreen="true">
     <div class="ion-padding">
-        <ion-segment [(ngModel)]="segmentModel" color="primary" (ionChange)="segmentChanged($event)">
+        <ion-segment scrollable [(ngModel)]="segmentModel" color="primary" (ionChange)="segmentChanged($event)">
             <ion-segment-button value="user" layout="icon-start">
                 <ion-icon name="person-outline"></ion-icon>
                 <ion-label>Utilisateur</ion-label>
@@ -38,7 +38,7 @@
 <!--                    <small *ngIf="formRegisterErrors.roles">{{formRegisterErrors.roles}}&#42;</small>-->
 <!--                </ion-row>-->
                 <ion-item>
-                    <ion-label position="floating">Nom</ion-label>
+                    <ion-label position="floating"><h4>Nom</h4></ion-label>
                     <ion-input class="input" type="text" formControlName="nom" required></ion-input>
                 </ion-item>
                 <ion-row class="error ">
@@ -46,7 +46,7 @@
                     <small *ngIf="formRegisterErrors.nom" >{{formRegisterErrors.nom}}&#42;</small>
                 </ion-row>
                 <ion-item>
-                    <ion-label position="floating">Prenom</ion-label>
+                    <ion-label position="floating"><h4>Prenom</h4></ion-label>
                     <ion-input class="input" type="text" formControlName="prenom" required></ion-input>
                 </ion-item>
                 <ion-row class="error">
@@ -54,7 +54,7 @@
                     <small *ngIf="formRegisterErrors.prenom">{{formRegisterErrors.prenom}}&#42;</small>
                 </ion-row>
                 <ion-item>
-                    <ion-label position="floating">Username</ion-label>
+                    <ion-label position="floating"><h4>Username</h4></ion-label>
                     <ion-input class="input" type="text" formControlName="username" required></ion-input>
                 </ion-item>
                 <ion-row class="error">
@@ -62,7 +62,7 @@
                     <small *ngIf="formRegisterErrors.username">{{formRegisterErrors.username}}&#42;</small>
                 </ion-row>
                 <ion-item>
-                    <ion-label position="floating">Date de naissance</ion-label>
+                    <ion-label position="floating"><h4>Date de naissance</h4></ion-label>
                     <ion-datetime max="2002-12-31" (ionChange)="getDate($event)" formControlName="dateNaiss" [value]="defaultDate"
                                   required></ion-datetime>
                 </ion-item>
@@ -71,7 +71,7 @@
                     <small *ngIf="formRegisterErrors.dateNaiss">{{formRegisterErrors.dateNaiss}}&#42;</small>
                 </ion-row>
                 <ion-item>
-                    <ion-label position="floating">Telephone</ion-label>
+                    <ion-label position="floating"><h4>Telephone</h4></ion-label>
                     <ion-input class="input" type="number" formControlName="telephone" required></ion-input>
                 </ion-item>
                 <ion-row class="error ">
@@ -80,7 +80,7 @@
                 </ion-row>
 
                 <ion-item>
-                    <ion-label position="floating">Email</ion-label>
+                    <ion-label position="floating"><h4>Email</h4></ion-label>
                     <ion-input class="input" type="email" formControlName="email" required></ion-input>
                 </ion-item>
                 <ion-row class="error ">
@@ -88,7 +88,7 @@
                     <small *ngIf="formRegisterErrors.email" >{{formRegisterErrors.email}}&#42;</small>
                 </ion-row>
                 <ion-item>
-                    <ion-label position="floating">Mot de passe</ion-label>
+                    <ion-label position="floating"><h4>Mot de passe</h4></ion-label>
                     <ion-input formControlName="password" type="password" required></ion-input>
                 </ion-item>
                 <ion-row class="error ">
@@ -96,7 +96,7 @@
                     <small *ngIf="formRegisterErrors.password">{{formRegisterErrors.password}}&#42;</small>
                 </ion-row>
                 <ion-item >
-                    <ion-label position="floating">Fonction</ion-label>
+                    <ion-label position="floating"><h4>Fonction</h4></ion-label>
                     <ion-input formControlName="fonction" type="text"></ion-input>
                 </ion-item>
                 <ion-row class="error ">

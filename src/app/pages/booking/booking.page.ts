@@ -21,6 +21,7 @@ export class BookingPage implements OnInit {
     depTrips =new Array<Bus>();
     arrTrips =new Array<Bus>();
     trip : Trip;
+    isSearchValid :boolean;
     trips = new Array<Trip>();
     public size=5;
     public currenPage=0;
@@ -38,6 +39,7 @@ export class BookingPage implements OnInit {
                 private busService : BusService,private tripService : TripsService) {
     }
     ngOnInit() {
+
         // let timeString = '07:30:30';
         // let minute=timeString.split(':')[1];
         // console.log(minute)
@@ -127,7 +129,18 @@ export class BookingPage implements OnInit {
 
     public validSearch(arr,dep){
         if(arr!==null && dep!==null && arr!==dep) {
-            return  true;
+            // this.isSearchValid=false;
+            return true;
+        }
+            return false;
+
+    }
+    initSearch(arr,dep){
+        if((arr===null ||    dep===null)){
+            return true;
+        }
+        else if(arr!==null && dep!==null && arr!==dep){
+            return true;
         }
         return false;
     }

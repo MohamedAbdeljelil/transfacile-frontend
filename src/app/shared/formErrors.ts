@@ -32,6 +32,11 @@ export const formErrors = {
         'formJur': '',
         'qualite': '',
         'telContact': ''
+    },
+    'feedback' : {
+        'question':'',
+        'message' : '',
+        'email' : ''
     }
 
 };

@@ -11,9 +11,6 @@ export const validationMessage = {
         }
     },
     'register': {
-        'roles': {
-            'required': "Veuillez choisir le types d'utilisateurs.",
-        },
         'nom': {
             'required': 'Le champ nom est obligatoire.',
             'minlength': 'Ce champ doit contenir 2 caracteres au moins.',
@@ -114,6 +111,18 @@ export const validationMessage = {
             'maxlength': 'Ce champ doit contenir 25 caracteres au plus.'
         },
 
+    },
+    'feedback': {
+        'question' :{
+            'required' : 'Veuillez selectionner un element'
+        },
+        'message' :{
+            'required' : 'Ce champs est obligatoire',
+        },
+        'email' :{
+            'required': "Veuillez renseigner votre email.",
+            'email': 'Email non valide.'
+        }
     }
 };
 

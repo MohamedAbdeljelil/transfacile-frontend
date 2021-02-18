@@ -11,6 +11,8 @@ export class WelcomePagePage implements OnInit {
 
   @ViewChild('mainSlides', {static : true}) slides : IonSlides
   constructor(private router : Router) { }
+  indexSlide=0;
+
 
   ngOnInit() {
   }
@@ -21,7 +23,8 @@ export class WelcomePagePage implements OnInit {
     }
 
   backbtn() {
-        this.slides.slidePrev();
+      this.slides.slidePrev();
+
   }
 
     async goNext() {
@@ -32,11 +35,11 @@ export class WelcomePagePage implements OnInit {
       }
     }
 
-  async hideBackbtn() {
-    if (await this.slides.getActiveIndex() === 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // async hideBackbtn() {
+  //   if (await this.slides.getActiveIndex() === 0) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }

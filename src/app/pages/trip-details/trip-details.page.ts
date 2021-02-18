@@ -8,6 +8,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {AuthentificationService} from "../../services/authentification.service";
 import {User} from "../../models/User";
 import {TripsService} from "../../services/trips.service";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-trip-details',
@@ -18,11 +19,12 @@ export class TripDetailsPage implements OnInit {
   @Input() trips: Array<Trip>;
   @Input() trip: Trip;
   isFavorite = false;
-  AlertButtonText ="Add";
+  alertButtonText ="Add";
+  alertTextMessage = "Voulez vous ajouter ce voyage à vos favoris";
   idFavorite : number;
   favTrips : Trip[] = [];
   unFavTrip : Trip;
-  // private currentuUer : any;
+  users : User[];
   private currentUser : User;
   private Token : any;
   private id : number;
@@ -42,10 +44,7 @@ export class TripDetailsPage implements OnInit {
   ngOnInit() {
     console.log(this.trips);
     console.log(this.trip);
-    this.tripService.getListTrips().subscribe((results)=>{
-      this.listTrips = results;
-      console.log(this.listTrips);
-    })
+
     console.log(this.tokenStorage.getUser());
     this.Token=this.tokenStorage.getUser();
     // console.log(this.Token.id)
@@ -54,14 +53,25 @@ export class TripDetailsPage implements OnInit {
     this.authService.getUserById(this.id).subscribe(
         data => {
           this.currentUser=data;
-          console.log(data);
-          this.isFavorite = this.isInTripFav(this.trip);
           // this.currentUser=this.user;
         },
         error => {
           console.log(error);
         }
     );
+    this.tripService.getListTrips().subscribe((results : Trip[])=>{
+          this.listTrips=results;
+      console.log(this.listTrips);
+      this.isInTripFav(this.trip);
+      if(this.isFavorite){
+        this.unFavTrip=this.isTripExistInDB(this.trip);
+        this.users=this.unFavTrip.users;
+        console.log(this.users);
+      }
+          console.log(this.isFavorite);
+    });
+
+
   }
 
   // loadFavTrips(){
@@ -117,11 +127,11 @@ export class TripDetailsPage implements OnInit {
   }
 
     async openModal() {
-    this.showAlertButtonText(this.isFavorite);
+    this.showAlertText(this.isFavorite);
       const alert = await this.alertController.create({
         cssClass : 'alert-style',
         header: 'Favoris ',
-        message: 'Voulez vous ajouter ce voyage à vos favoris voyages',
+        message: this.alertTextMessage,
         buttons: [
           {
             text: 'Cancel',
@@ -129,25 +139,46 @@ export class TripDetailsPage implements OnInit {
             handler: () => {
             }
           }, {
-            text: this.AlertButtonText,
+            text: this.alertButtonText,
             handler: () => {
               console.log('Confirm Ok');
               if(this.isFavorite){
-                this.unFavTrip = this.isTripExistInDB(this.trip);
                 if(this.unFavTrip!==null){
-                  this.unfovariteTrip(this.isTripExistInDB(this.unFavTrip));
+                  // console.log(this.users);
+                  this.unFavTrip.heure_dep = '1968-11-16T'+ this.unFavTrip.heure_dep;
+                  this.unFavTrip.heure_arriv = '1968-11-16T'+ this.unFavTrip.heure_arriv;
+                  this.unFavTrip.users=this.users;
+                  console.log(this.unFavTrip);
+                  this.unfovariteTrip(this.unFavTrip);
                   this.isFavorite=false;
                 }
               }
               else{
-                console.log(this.trip);
-                if(this.trip.users){
-                  this.trip.users= new Array<User>();
-                  this.trip.users.push(this.currentUser);
+
+                let tripFav = new Trip(null, this.trip.nb_stop,
+                    this.trip.route_name, this.trip.route_num,this.trip.depStation, this.trip.arrStation,
+                    0, 0, this.trip.heure_dep, this.trip.heure_arriv,[]);
+                
+                // let newDate = new Date(dateString);
+                if(this.isTripExistInDB(this.trip)!==null){
+                  tripFav = this.isTripExistInDB(this.trip);
+                  console.log(tripFav);
+                  tripFav.heure_dep = '1968-11-16T'+ tripFav.heure_dep;
+                  tripFav.heure_arriv = '1968-11-16T'+ tripFav.heure_arriv;
+                  tripFav.users.push(this.currentUser);
+                  this.tripService.updateTrip(tripFav.trip_id,tripFav).subscribe(()=>{
+                    this.isFavorite=true;
+                  });
                 }
-                this.tripService.saveTrip(this.trip).subscribe(()=>{
-                        this.isFavorite=true;
-                });
+                else {
+                  tripFav.heure_dep = '1968-11-16T'+ tripFav.heure_dep;
+                  tripFav.heure_arriv = '1968-11-16T'+ tripFav.heure_arriv;
+                  tripFav.users.push(this.currentUser);
+                  this.tripService.saveTrip(tripFav).subscribe(()=>{
+                    this.isFavorite=true;
+                  });
+                }
+
               }
             }
           }
@@ -155,28 +186,37 @@ export class TripDetailsPage implements OnInit {
       });
       await alert.present();
     }
-    showAlertButtonText(isfavorite : boolean){
-  if(isfavorite)
-    this.AlertButtonText = "Unfavorite";
-  else
-    this.AlertButtonText = "Add";
+    showAlertText(isfavorite : boolean){
+  if(isfavorite){
+    this.alertButtonText = "Unfavorite";
+    this.alertTextMessage="Voulez vous supprimer ce voyage de vos favoris";
   }
+}
   isInTripFav(trip : Trip) {
     // let toKeepTrips :Trip[]=[];
     if(this.isTripExistInDB(trip)!==null){
-      if(trip.users!==null && trip.users.indexOf(this.currentUser)!==-1){
-              return true;
+      const tripFav=this.isTripExistInDB(trip);
+
+      if(tripFav.users!==null){
+        tripFav.users.forEach(user=>{
+          if(user.username===this.currentUser.username){
+            this.isFavorite=true;
+          }
+        });
       }
     }
     return false;
   }
 
 
-  isTripExistInDB(trip) : Trip{
+  isTripExistInDB(trip:Trip) : Trip{
     if(this.listTrips){
-      for (let element of this.listTrips) {
+      console.log(this.listTrips);
+      for(let element of this.listTrips){
+
         if (element.depStation === trip.depStation && element.arrStation === trip.arrStation
-            && element.heure_dep === trip.heure_dep && element.heure_arriv === trip.heure_arriv){
+        && element.route_num ===trip.route_num){
+          console.log(element);
           return element;
         }
       }
@@ -185,16 +225,27 @@ export class TripDetailsPage implements OnInit {
   }
   unfovariteTrip(trip:Trip){
     let listUsersToKeep : User[]=[];
-    let indexUser = trip.users.indexOf(this.currentUser);
-    if(indexUser!==-1){
-      listUsersToKeep.slice(0,indexUser);
-      console.log(listUsersToKeep);
-      listUsersToKeep.slice(indexUser+1,trip.users.length);
+    console.log(trip.users);
+    let users = trip.users;
+    let index=-1;
+    console.log(this.currentUser);
+    for(let i=0;i<users.length;i++){
+      if(users[i].username===this.currentUser.username){
+          index=i;
+      }
     }
+    // let indexUser = trip.users.indexOf(this.currentUser);
+    console.log(index);
+    listUsersToKeep=users;
+    if(index!==-1){
+     listUsersToKeep.splice(index,1);
+    }
+    console.log(listUsersToKeep);
     trip.users=listUsersToKeep;
     console.log(trip.users);
+    console.log(trip);
     this.tripService.updateTrip(trip.trip_id,trip).subscribe((res)=>{
-      console.log(res);
+     console.log(res);
     });
   }
 

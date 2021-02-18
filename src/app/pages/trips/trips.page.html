@@ -4,7 +4,7 @@
       <ion-back-button text="Search" defaultHref="/tabs/booking" color="primary"></ion-back-button>
     </ion-buttons>
     <ion-avatar slot="end">
-      <ion-img src="../../../assets/img/profile_women.png"></ion-img>
+      <ion-img src="../../../assets/img/profile.png"></ion-img>
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
@@ -30,6 +30,11 @@
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <div class="ion-margin-top" *ngIf="trips.length===0">
+      <img src="../../../assets/img/404.png">
+      <p class="ion-text-center ion-padding-top">Pas de voyages entre ces 2 arrets</p>
+    </div>
 
     <ion-card *ngFor="let trip of trips">
       <ion-card-content>

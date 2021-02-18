@@ -132,18 +132,18 @@
 
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Matricule Fiscale</mat-label>
                 <input formControlName="matriculeFis" matInput required>
                 <mat-error *ngIf="formSocRegistErrors.matriculeFis">{{formSocRegistErrors.matriculeFis}}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
+            </mat-form-field >
+            <mat-form-field class="full-width">
                 <mat-label>N&#176; affiliation CNSS</mat-label>
                 <input formControlName="NumAffiCnss" matInput required type="number">
                 <mat-error *ngIf="formSocRegistErrors.NumAffiCnss">{{formSocRegistErrors.NumAffiCnss}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Secteurs d'activite</mat-label>
                 <mat-select formControlName="secActivite" required>
                     <mat-option>--</mat-option>
@@ -175,7 +175,7 @@
             <ng-template matStepLabel>
                 <div>Adresse</div>
             </ng-template>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Gouvernorats</mat-label>
                 <mat-select formControlName="gouvernorats" required>
                     <mat-option>--</mat-option>
@@ -186,32 +186,32 @@
                 <mat-error *ngIf="formSocRegistErrors.gouvernorats">Please choose an animal</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Adresse Exacte</mat-label>
                 <input formControlName="adresse" matInput required>
                 <mat-error *ngIf="formSocRegistErrors.adresse">{{formSocRegistErrors.adresse}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Localité</mat-label>
                 <input formControlName="local" matInput required>
                 <mat-error *ngIf="formSocRegistErrors.local">{{formSocRegistErrors.local}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Code postal</mat-label>
                 <input formControlName="codePost" matInput required>
                 <mat-error *ngIf="formSocRegistErrors.codePost"
                            type="number">{{formSocRegistErrors.codePost}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Télephone</mat-label>
                 <input formControlName="tel" matInput required type="tel">
                 <mat-error *ngIf="formSocRegistErrors.tel">{{formSocRegistErrors.tel}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Email</mat-label>
                 <input formControlName="emailSociete" matInput required type="email">
                 <mat-error *ngIf="formSocRegistErrors.emailSociete">{{formSocRegistErrors.emailSociete}}</mat-error>
@@ -228,20 +228,20 @@
                 <div>Personne à contacter</div>
             </ng-template>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Nom et prénom</mat-label>
                 <input formControlName="nomPrenomContact" matInput required>
                 <mat-error
                         *ngIf="formSocRegistErrors.nomPrenomContact">{{formSocRegistErrors.nomPrenomContact}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Qualité</mat-label>
                 <input formControlName="qualite" matInput required>
                 <mat-error *ngIf="formSocRegistErrors.qualite">{{formSocRegistErrors.qualite}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>Télephone</mat-label>
                 <input formControlName="telContact" matInput required type="tel">
                 <mat-error *ngIf="formSocRegistErrors.telContact">{{formSocRegistErrors.telContact}}</mat-error>

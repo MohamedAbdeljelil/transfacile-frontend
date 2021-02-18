@@ -15,18 +15,6 @@ ion-content {
     font-weight: bold;
   }
 }
-mat-panel-title {
-  flex-basis: 0;
-}
-mat-panel-description {
-  flex-basis: 100%;
-  font-weight: bolder;
-  color: #0d0d0d;
-  font-family: 'Josefin Sans', sans-serif;
-}
-.example-headers-align .mat-form-field + .mat-form-field {
-  margin-left: 8px;
-}
 mat-card{
   margin-bottom: 16px;
   mat-card-header{
@@ -50,18 +38,23 @@ ion-item{
     font-family: "Josefin Sans", sans-serif;
   }
 }
-.mat-list-icon {
-  color: rgb(66, 223, 35);
-}
+
 .mat-line{
   font-family: "Josefin Sans", sans-serif;
 }
 h1{
   font-weight: bolder;
 }
-// .mat-action-row {
-//   place-content: space-between;
-// }
+
+ .mat-button {
+   margin-left: 60%;
+ }
+ .mat-card-header{
+   margin-left: 0%;
+ }
+ .full-width{
+   width: 100%;
+ }
 //mat-grid-tile {
 //  background: lightblue;
 //}
