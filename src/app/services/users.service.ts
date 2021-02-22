@@ -9,9 +9,13 @@ const API_URL = 'http://localhost:8080/api/test/';
     providedIn: 'root'
 })
 export class UsersService {
+    public host= "http://localhost:8080/api/test/";
 
     constructor(private http: HttpClient) {}
 
+    public getUsers():Observable<any>{
+        return this.http.get(this.host + 'users');
+    }
     getPublicContent(): Observable<any> {
         return this.http.get(API_URL + 'all', {responseType: 'text'});
     }

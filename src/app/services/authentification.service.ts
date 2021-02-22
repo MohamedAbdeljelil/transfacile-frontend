@@ -44,6 +44,7 @@ export class AuthentificationService {
     public getUserById(id : number) : Observable<any>{
         return this.http.get(AUTH_API + 'user/'+id);
     }
+
     setCurrentUser(user){
         this.currentUser=user;
     }

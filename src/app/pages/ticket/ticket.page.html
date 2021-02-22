@@ -1,8 +1,15 @@
 <app-header></app-header>
 <ion-content class="ion-padding">
-    <p class="ion-padding">
-        Please provide the email address and booking reference that you used when you have ....
-    </p>
+    <ion-item  lines="none">
+        <ion-icon size="large" slot="start" color="primary" name="information-circle-outline"></ion-icon>
+        <ion-label class="ion-margin-top ion-padding-top">
+            <p class="ion-text-wrap">
+                Merci de fournir l'email ainsi que le références de réservation
+            </p>
+        </ion-label>
+
+    </ion-item>
+
     <ion-list>
         <ion-item lines="none" class="input">
             <ion-icon slot="end" name="mail-outline"></ion-icon>
@@ -13,4 +20,7 @@
             <ion-input placeholder="Reference de Reservation" type="text" required></ion-input>
         </ion-item>
     </ion-list>
+    <ion-button mode="ios"
+                color="primary" shape="round">
+        <ion-icon slot="start" size="large" color="light" name="search-circle-outline"></ion-icon>Rechercher</ion-button>
 </ion-content>

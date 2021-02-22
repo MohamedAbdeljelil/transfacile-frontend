@@ -8,6 +8,7 @@ import {ForumPageRoutingModule} from './forum-routing.module';
 
 import {ForumPage} from './forum.page';
 import {HeaderPageModule} from "../header/header.module";
+import {MaterialModule} from "../../material.module";
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {HeaderPageModule} from "../header/header.module";
         FormsModule,
         IonicModule,
         ForumPageRoutingModule,
-        HeaderPageModule
+        HeaderPageModule,
+        MaterialModule
     ],
     declarations: [ForumPage]
 })

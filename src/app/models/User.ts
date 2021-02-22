@@ -1,5 +1,6 @@
 import {Trip} from "./Trip";
 import {Role} from "./Role";
+import {Feedback} from "./Feedback";
 
 export class User {
     public idUser: number;
@@ -15,6 +16,6 @@ export class User {
     public language: string;
     public fonction: string;
     roles : Role[];
-    //feedbacks : Feedback[];
+    feedbacks : Feedback[];
     
 }

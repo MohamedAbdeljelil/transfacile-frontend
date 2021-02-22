@@ -25,11 +25,11 @@ export class Utilities {
     }
 
     public questions = [
-        'Selectionner votre sujet',
         'Signaler un probleme',
         'Proposer une ameliorations',
-        'Pose une questions',
-        'Signaler un beug'
+        'Poser une questions',
+        'Signaler un beug',
+        'Deposer une reclamation'
     ]  ;
 
 }

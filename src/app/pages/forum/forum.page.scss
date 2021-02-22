@@ -1,0 +1,35 @@
+ion-content {
+  --background: #f6f6f6;
+  h2{
+    font-family: 'Josefin Sans', sans-serif;
+  }
+}
+.example-header-image {
+  background-image: url('https://www.pngkit.com/png/full/128-1280585_user-icon-fa-fa-user-circle.png');
+  background-size: cover;
+}
+img {
+  margin: auto;
+  display: table;
+  width: 200px;
+}
+.tweet-img {
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 2.5%;
+}
+.tweet ion-label {
+  line-height: 1!important;
+  font-size: 15px;
+  margin: 6px 0px 6px 0px!important;
+  min-height: 34px;
+}
+.tweet {
+  margin-top: -10px!important;
+}
+.space{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //align-items: center;
+}

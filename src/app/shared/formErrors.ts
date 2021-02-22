@@ -34,9 +34,9 @@ export const formErrors = {
         'telContact': ''
     },
     'feedback' : {
-        'question':'',
-        'message' : '',
-        'email' : ''
+        'subject':'',
+        'commentaire' : '',
+        'emailResponse' : ''
     }
 
 };

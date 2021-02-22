@@ -1,4 +1,37 @@
 <app-header></app-header>
-<ion-content>
-
+<ion-content class="ion-padding">
+        <img src="../../../assets/img/forum.png">
+        <h2 class="ion-text-center ion-text-capitalize">Forum</h2>
+    <div *ngFor="let user of users">
+    <mat-card class="ion-margin-top" *ngFor="let feedback of user.feedbacks;let i=index">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title class="ion-text-capitalize">{{user.nom}} {{user.prenom}}</mat-card-title>
+            <mat-card-subtitle>{{feedback.subject}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{feedback.commentaire}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="space">
+            <button mat-icon-button color="primary" (click)="likeFeedBack()">
+                <mat-icon>thumb_up_alt</mat-icon>
+                {{(i+2)*(i+1)}}
+            </button>
+            <button mat-icon-button color="warn" (click)="UnlikeFeedBack()">
+                <mat-icon>thumb_down_alt</mat-icon>
+                {{(i+1)*(i+1)}}
+            </button>
+            <button mat-button color="medium" >
+                {{feedback.creationDate | date}}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [routerLink]="['/feedback']" router-animation="forward">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

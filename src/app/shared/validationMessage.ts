@@ -113,13 +113,13 @@ export const validationMessage = {
 
     },
     'feedback': {
-        'question' :{
+        'subject' :{
             'required' : 'Veuillez selectionner un element'
         },
-        'message' :{
+        'commentaire' :{
             'required' : 'Ce champs est obligatoire',
         },
-        'email' :{
+        'emailResponse' :{
             'required': "Veuillez renseigner votre email.",
             'email': 'Email non valide.'
         }
