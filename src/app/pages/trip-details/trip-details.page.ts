@@ -178,7 +178,8 @@ export class TripDetailsPage implements OnInit {
                     this.isFavorite=true;
                   });
                 }
-
+                    this.tripService.getFavTrips().push(tripFav);
+                console.log(this.tripService.getFavTrips());
               }
             }
           }

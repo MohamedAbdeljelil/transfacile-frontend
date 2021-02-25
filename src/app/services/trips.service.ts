@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 export class TripsService {
   public host= "http://localhost:8080/api/test/trip";
   Trips = new Array<Trip>();
-
+  TripsFav = new Array<Trip>();
 
   constructor(private httpClient: HttpClient) { }
   getTrips(){
@@ -38,7 +38,12 @@ export class TripsService {
   public updateTrip(id:number,data) {
     return this.httpClient.put(this.host+"/"+id, data);
   }
-
+  getFavTrips(){
+    return this.TripsFav;
+  }
+  setFavTrips(data){
+    this.TripsFav=data;
+  }
 
 
 

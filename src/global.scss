@@ -58,4 +58,13 @@ ion-menu-button{
   --background :  #FFFFFF;
   --border-radius: 50%;
 }
-
+.alert-del .alert-wrapper {
+  --background: #e5e5e5;
+  .alert-title.sc-ion-alert-md, .alert-title.sc-ion-alert-ios {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+  }
+  .alert-button.sc-ion-alert-md, .alert-button.sc-ion-alert-ios {
+    color: var(--ion-color-danger);
+  }
+}

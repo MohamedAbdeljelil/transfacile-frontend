@@ -7,7 +7,7 @@ import {IonicModule} from '@ionic/angular';
 import {HomePageRoutingModule} from './home-routing.module';
 
 import {HomePage} from './home.page';
-import {HeaderPageModule} from "../header/header.module";
+import {HeaderPageModule} from "../../../pages/header/header.module";
 
 @NgModule({
     imports: [

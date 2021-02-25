@@ -51,7 +51,7 @@ export class FavoritesPage implements OnInit {
     this.loadFavTrips();
 
     // this.refresh();
-
+console.log(this.tripService.getFavTrips());
 
 
   }
@@ -156,6 +156,8 @@ export class FavoritesPage implements OnInit {
         for(let i=0;i<element.users.length;i++){
           if((element.users)[i].username===this.currentUser.username){
             this.listFavTrips.push(element);
+            // this.tripService.setFavTrips(this.listFavTrips);
+            // console.log(this.tripService.getFavTrips());
           }
         }
       });
@@ -187,7 +189,7 @@ export class FavoritesPage implements OnInit {
   refresh(): void {
     window.location.reload();
   }
-  async deleteFav(trip) {
+  async deleteFav(trip,index) {
     const alert = await this.alertController.create({
       cssClass: 'alert-style',
       header: 'Favoris ',
@@ -203,13 +205,18 @@ export class FavoritesPage implements OnInit {
           handler: () => {
             console.log('Confirm Ok');
                 // console.log(this.users);
+            this.listFavTrips.forEach(e=>{
+              if(e.trip_id===trip.trip_id){
+                this.listFavTrips.splice(index,1);
+              }
+            });
             this.listTrips.forEach(element=>{
               if(element.trip_id===trip.trip_id){
                 console.log(element);
                 this.unfovariteTrip(element);
-                window.location.reload();
+                // window.location.reload();
               }
-            })
+            });
 
           }
         }

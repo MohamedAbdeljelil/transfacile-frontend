@@ -16,6 +16,9 @@ export class UsersService {
     public getUsers():Observable<any>{
         return this.http.get(this.host + 'users');
     }
+    public getUsersWithPageAndSize(page : number,size:number):Observable<any>{
+        return this.http.get(this.host + 'allUsers?page='+page+'&size='+size);
+    }
     getPublicContent(): Observable<any> {
         return this.http.get(API_URL + 'all', {responseType: 'text'});
     }
@@ -23,15 +26,16 @@ export class UsersService {
     getUserBoard(): Observable<any> {
         return this.http.get(API_URL + 'user', {responseType: 'text'});
     }
-
-
-
     getModeratorBoard(): Observable<any> {
         return this.http.get(API_URL + 'mod', {responseType: 'text'});
     }
 
     getAdminBoard(): Observable<any> {
         return this.http.get(API_URL + 'admin', {responseType: 'text'});
+    }
+
+    public deleteUser(id:number){
+        return this.http.delete(this.host + 'user/'+id);
     }
 
 }

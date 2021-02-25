@@ -78,6 +78,26 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+    {
+        path: 'home',
+        loadChildren: () => import('./admin-module/pages/home/home.module').then( m => m.HomePageModule)
+    },
+  {
+    path: 'users',
+    loadChildren: () => import('./admin-module/pages/users/users.module').then(m => m.UsersPageModule)
+  },
+  {
+    path: 'feedbacks',
+    loadChildren: () => import('./admin-module/pages/feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
+  },
+  {
+    path: 'reservations',
+    loadChildren: () => import('./admin-module/pages/reservations/reservations.module').then( m => m.ReservationsPageModule)
+  },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./admin-module/pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
   }
 ];
 
