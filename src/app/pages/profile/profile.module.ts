@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {IonicModule} from '@ionic/angular';
 
@@ -12,6 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import {MenuPageModule} from "../../menu/menu.module";
 import {MatIconModule} from "@angular/material/icon";
 import {ClrIconModule} from "@clr/angular";
+import {EditProfilePage} from "../../admin-module/pages/edit-profile/edit-profile.page";
+import {EditUserPage} from "../../admin-module/pages/edit-user/edit-user.page";
 
 @NgModule({
     imports: [
@@ -23,8 +25,9 @@ import {ClrIconModule} from "@clr/angular";
         HeaderPageModule,
         MenuPageModule,
         ClrIconModule,
+        ReactiveFormsModule,
     ],
-    declarations: [ProfilePage]
+    declarations: [ProfilePage],
 })
 export class ProfilePageModule {
 }

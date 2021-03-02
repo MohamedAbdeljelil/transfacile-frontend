@@ -98,7 +98,12 @@ const routes: Routes = [
   {
     path: 'statistics',
     loadChildren: () => import('./admin-module/pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
-  }
+  },
+
+  // {
+  //   // path: 'new-user',
+  //   // loadChildren: () => import('./admin-module/pages/new-user/new-user.module').then(m => m.NewUserPageModule)
+  // }
 ];
 
 @NgModule({

@@ -1,11 +1,34 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>statistics</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/users"  color="primary">Dashboard</ion-back-button>
+      <!--        <ion-icon slot="icon-only" name="plus" color="primary"></ion-icon>-->
+    </ion-buttons>
+    <ion-title class="ion-text-center">statistics</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="width: 100%">
+<ion-content class="ion-margin-top">
+  <ion-row>
+    <ion-col size="6">
+  <ion-button  fill="outline">
+  <ion-icon color="success" slot="start" name="calendar"></ion-icon>
+  <ion-datetime class="top" placeholder="Date debut"></ion-datetime>
+  </ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button fill="outline">
+        <ion-icon color="success" slot="start" name="calendar"></ion-icon>
+        <ion-datetime class="top" placeholder="Date fin"></ion-datetime>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <div style="width: 100%" class="ion-margin-top">
     <canvas id="bar"></canvas>
+  </div>
+  <ion-item-divider></ion-item-divider>
+  <div style="width: 100%" class="ion-margin-top">
+    <canvas id="doughnut"></canvas>
   </div>
 </ion-content>

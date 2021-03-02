@@ -16,6 +16,9 @@ export class UsersService {
     public getUsers():Observable<any>{
         return this.http.get(this.host + 'users');
     }
+    public getByUsername(username : string):Observable<User>{
+        return this.http.get<User>(this.host + 'user/'+username);
+    }
     public getUsersWithPageAndSize(page : number,size:number):Observable<any>{
         return this.http.get(this.host + 'allUsers?page='+page+'&size='+size);
     }
@@ -37,5 +40,4 @@ export class UsersService {
     public deleteUser(id:number){
         return this.http.delete(this.host + 'user/'+id);
     }
-
 }

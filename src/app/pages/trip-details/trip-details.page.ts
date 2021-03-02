@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { TripsPage } from './../trips/trips.page';
 import { Trip } from './../../models/Trip';
 import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';

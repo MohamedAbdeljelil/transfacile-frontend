@@ -33,13 +33,13 @@
         </div>
     </div>
     </div>
-    <div class="ion-padding">
+    <div class="ion-padding" (click)="openModal(user)">
     <ion-item lines="none">
         <ion-label>
 <!--             {{"Email" | translate}}-->
             {{user?.email}}
         </ion-label>
-        <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
+        <clr-icon shape="note" size=32 class="is-highlight" ></clr-icon>
     </ion-item>
     <ion-item lines="none">
         <ion-label>
@@ -59,9 +59,9 @@
             </ion-label>
             <clr-icon shape="note" size=32 class="is-highlight"></clr-icon>
         </ion-item>
-        <ion-button color="primary" mode="ios" expand="block">
-            <ion-icon slot="start" name="card"></ion-icon>
-            Ajouter une carte Bancaire
+        <ion-button color="primary" mode="ios" expand="block" (click)="openModal(user)">
+            <ion-icon slot="start" name="create"></ion-icon>
+            Modifier profil
         </ion-button>
     </div>
 </ion-content>

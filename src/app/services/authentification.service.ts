@@ -45,6 +45,22 @@ export class AuthentificationService {
         return this.http.get(AUTH_API + 'user/'+id);
     }
 
+    update(user,id:number): Observable<any> {
+        return this.http.put(AUTH_API + 'update/'+id, {
+            nom: user.nom,
+            prenom: user.prenom,
+            username: user.username,
+            email: user.email,
+            enable: user.enable,
+            dateNaiss: user.dateNaiss,
+            telephone: user.telephone,
+            photosProfil: user.photosProfil,
+            fonction: user.fonction,
+            password: user.password,
+            language : user.language,
+            roles: user.roles,
+        }, httpOptions);
+    }
     setCurrentUser(user){
         this.currentUser=user;
     }

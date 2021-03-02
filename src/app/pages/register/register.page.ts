@@ -73,7 +73,7 @@ export class RegisterPage implements OnInit {
                 loading.dismiss();
                 this.isSuccessful = true;
                 this.isSignUpFailed = false;
-                this.route.navigate(['/'])
+                this.route.navigate(['/login'])
             },
             async err => {
                 this.errorMessage = err.error.message;
@@ -98,8 +98,8 @@ export class RegisterPage implements OnInit {
         console.log(this.segmentModel);
     }
 
-    optionChanged(e: any) {
-        console.log('Option changed', e);
-    }
+        optionChanged(e: any) {
+            console.log('Option changed', e);
+        }
 }
 

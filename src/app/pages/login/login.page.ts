@@ -68,7 +68,12 @@ export class LoginPage implements OnInit {
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
                 // this.getCurrentUser();
+            if(this.roles[0] ==="ROLE_ADMIN"){
+                this.route.navigateByUrl('/home');
+            }
+            else{
                 this.route.navigateByUrl('/tabs/booking');
+            }
             },
              err => {
                 this.errorMessage = err.error.message;
