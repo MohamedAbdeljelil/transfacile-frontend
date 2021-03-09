@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"  color="primary"></ion-back-button>
+      <!--        <ion-icon slot="icon-only" name="plus" color="primary"></ion-icon>-->
+    </ion-buttons>
+    <ion-title>Gerer les utilisateurs</ion-title>
+    <ion-buttons slot="end">
+      <ion-button    fill="clear" color="primary" (click)="addNewUser(users)">
+        <ion-icon  slot="icon-only" name="add-circle-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-button fill="clear" class="ion-text-center" (click)="toggleBulkEdit()" color="success" shape="round">
+    <ion-icon slot="start" name="checkbox"></ion-icon>
+    Selectionner plusieurs
+  </ion-button>
+  <ion-button fill="clear" (click)="BulkDelete()" color="danger" shape="round" *ngIf="bulkEdit">
+    <ion-icon name="trash-bin"></ion-icon>
+    Supprimer plusieurs
+  </ion-button>
+  <ion-row class="header-row">
+    <ion-col size="2" *ngIf="bulkEdit">
+      Select
+    </ion-col>
+    <ion-col size="6" size-md="2" size-lg="2" tappable (click)="sortBy('email')">
+      Email
+      <ion-icon name="arrow-down-outline" *ngIf="sortDirection==1"></ion-icon>
+      <ion-icon name="arrow-up-outline" *ngIf="sortDirection==2"></ion-icon>
+    </ion-col><ion-col size="2" >
+    Nom
+  </ion-col><ion-col size="2" class="ion-hide-md-down">
+    Prenom
+  </ion-col>
+    <ion-col size="2" class="ion-hide-md-down">
+    Telephone
+  </ion-col>
+    <ion-col size="2" class="ion-hide-md-down">
+      Date de naissance
+    </ion-col>
+    <ion-col size="4" size-md="2" size-lg="2" *ngIf="!bulkEdit">
+    Action
+  </ion-col>
+
+  </ion-row>
+  <ion-row class="row-line" *ngFor="let user of users;let i=index">
+    <ion-col size="2" *ngIf="bulkEdit">
+      <ion-checkbox [(ngModel)]="edit[i]">
+
+      </ion-checkbox>
+    </ion-col>
+    <ion-col size="6" size-md="2" size-lg="2" tappable>
+      {{user.email}}
+    </ion-col>
+    <ion-col size="2" >
+    {{user.nom}}
+  </ion-col>
+    <ion-col size="2" class="ion-hide-md-down">
+    {{user.prenom}}
+  </ion-col>
+    <ion-col size="2" class="ion-hide-md-down">
+      {{user.telephone}}
+    </ion-col>
+    <ion-col size="2" class="ion-hide-md-down">
+      {{user.dateNaiss | date}}
+    </ion-col>
+    <ion-col size="4" size-md="2" size-lg="2" *ngIf="!bulkEdit">
+      <ion-button   size="small" fill="clear" color="success" (click)="editUser(user)">
+        <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="create" ></ion-icon>
+      </ion-button>
+      <ion-button  size="small" fill="clear" color="danger" (click)="remove(i,user)">
+      <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="trash" ></ion-icon>
+    </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+      {{page+1}} of {{totalPages}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="2">
+    <ion-button fill="clear" color="primary" [hidden]="page===0" (click)="goFirst()">
+      <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="play-back" ></ion-icon>
+    </ion-button>
+    </ion-col>
+    <ion-col size="2">
+    <ion-button   fill="clear" color="primary" [hidden]="page===0" (click)="PrevPage()">
+      <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="chevron-back-outline" ></ion-icon>
+    </ion-button>
+    </ion-col>
+    <ion-col size="4" class="ion-text-center">
+      <ion-select interface="popover" [(ngModel)]="size" (ionChange)="loadData()">
+        <ion-select-option [value]="5">5</ion-select-option>
+        <ion-select-option [value]="10">10</ion-select-option>
+        <ion-select-option [value]="25">25</ion-select-option>
+        <ion-select-option [value]="50">50</ion-select-option>
+      </ion-select>
+    </ion-col>
+
+    <ion-col size="2">
+      <ion-button fill="clear" color="primary" (click)="nextPage()" [hidden]="page===totalPages-1">
+        <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="chevron-forward-outline" ></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" [hidden]="page===totalPages-1" color="primary" (click)="goLast()">
+        <ion-icon class="ion-no-margin" size="small"  slot="icon-only" name="play-forward" ></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col size="12" class="ion-text-center">
+      <ion-button fill="clear" color="primary" (click)="goLast()">
+        <ion-icon slot="start" name="cloud-download-outline"></ion-icon>
+        Telecharger
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
